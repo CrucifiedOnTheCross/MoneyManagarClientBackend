@@ -1,0 +1,32 @@
+.container {
+    padding: 30px 150px;
+    height: 100vh;
+    display: flex;
+    gap: 30px;
+}
+
+.container .left-block {
+    padding: 15px 30px;
+    max-height: 100vh;
+    background-color: white;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.container .right-block {
+    padding: 15px 30px;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.container .right-block h2 {
+    margin-bottom: 10px;
+}
+
+.container .right-block .add-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #444;
+}

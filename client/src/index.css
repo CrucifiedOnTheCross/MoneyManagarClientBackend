@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'SuisseIntl-Medium';
+    src: url('/SuisseIntl-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SuisseIntl-Medium', sans-serif; /* Применяем шрифт ко всему телу */
+    background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    font-family: 'SuisseIntl-Medium', sans-serif; /* Применяем шрифт ко всем заголовкам */
+}
+
+/* Применяем шрифт ко всем другим элементам, если нужно */
+p, span, div {
+    font-family: 'SuisseIntl-Medium', sans-serif;
+}

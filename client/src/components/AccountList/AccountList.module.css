@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container .accountList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1; /* Это заставит список занимать оставшееся пространство */
+    overflow-y: auto; /* Если счетов будет много, появится скролл */
+}
+
+.container h2 {
+    margin-bottom: 5px;
+}
+
+.containerBottom {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Центрирует по горизонтали */
+    margin-top: 10px;
+}
+
+.addAccountButton {
+    padding: 10px 20px;
+    background-color: #7300ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.addAccountButton:hover {
+    background-color: #0056b3;
+}

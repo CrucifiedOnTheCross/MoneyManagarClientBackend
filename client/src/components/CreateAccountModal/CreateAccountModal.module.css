@@ -1,0 +1,63 @@
+/* Стиль для самого модального окна */
+.modal {
+    width: 400px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* добавляем relative для работы с абсолютным позиционированием */
+}
+
+/* Стиль для затемнения фона (overlay) */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed; /* фиксируем overlay на весь экран */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Центрируем модальное окно по горизонтали */
+    align-items: center; /* Центрируем модальное окно по вертикали */
+    z-index: 999; /* Убедитесь, что overlay и модальное окно находятся выше других элементов */
+}
+
+/* Стиль для формы и ее элементов */
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 5px 0 15px 0;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7300ff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7300ff;
+}
+
+button[type="button"]:last-child {
+    background-color: #ff5447;
+}
+
+button[type="button"]:last-child:hover {
+    background-color: #ff5447;
+}

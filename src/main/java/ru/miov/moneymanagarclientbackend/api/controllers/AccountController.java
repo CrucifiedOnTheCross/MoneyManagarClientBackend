@@ -1,6 +1,7 @@
 package ru.miov.moneymanagarclientbackend.api.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import ru.miov.moneymanagarclientbackend.api.service.AccountService;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 @RequestMapping("/api/accounts")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AccountController {
 
     AccountService accountService;
