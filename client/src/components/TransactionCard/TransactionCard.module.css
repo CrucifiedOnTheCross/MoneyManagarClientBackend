@@ -1,0 +1,17 @@
+.transactionCard {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.title {
+    margin: 0;
+    color: #333;
+}
+
+.text {
+    margin: 5px 0;
+    color: #555;
+}

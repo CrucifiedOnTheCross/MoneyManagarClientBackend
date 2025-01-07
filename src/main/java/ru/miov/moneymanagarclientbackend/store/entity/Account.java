@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,5 +40,10 @@ public class Account {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     Instant createdAt = Instant.now();
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = Instant.now();
+    }
 
 }

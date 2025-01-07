@@ -23,7 +23,7 @@ import ru.miov.moneymanagarclientbackend.api.service.TransactionService;
 @RequiredArgsConstructor
 @RequestMapping("/api/transactions")
 @CrossOrigin(origins = "http://localhost:5173")
-public class TransactionRepository {
+public class TransactionController {
 
     TransactionService transactionService;
 

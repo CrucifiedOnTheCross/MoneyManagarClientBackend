@@ -1,0 +1,16 @@
+.addInfo {
+    margin-bottom: 20px;
+}
+
+.transactionsList {
+    margin-top: 20px;
+}
+
+.transactionsTitle {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.noTransactions {
+    color: #999;
+}

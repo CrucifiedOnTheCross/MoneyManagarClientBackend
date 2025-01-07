@@ -40,7 +40,7 @@ function AccountList({onAccountClick}) {
 
     return (
         <div className={styles.container}>
-            <h2>Список аккаунтов</h2>
+            <h2>Список Счетов</h2>
 
             <div className={styles.accountList}>
                 {accounts.map((account) => (

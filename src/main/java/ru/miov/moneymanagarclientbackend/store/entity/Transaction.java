@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,6 +45,11 @@ public class Transaction {
     private String description;
 
     @Column(name = "transaction_date", nullable = false)
-    private Instant transactionDate = Instant.now();
+    private Instant transactionDate;
+
+    @PrePersist
+    public void prePersist() {
+        transactionDate = Instant.now();
+    }
 
 }

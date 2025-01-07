@@ -1,7 +1,7 @@
 import './App.css';
 import AccountList from "./components/AccountList/AccountList.jsx";
+import AccountDetails from "./components/AccountDetails/AccountDetails.jsx";
 import {useState} from "react";
-import PropTypes from "prop-types"; // Импорт PropTypes
 
 function App() {
     const [selectedAccount, setSelectedAccount] = useState(null);
@@ -16,16 +16,8 @@ function App() {
                 <AccountList onAccountClick={handleAccountClick}/>
             </div>
             <div className="right-block">
-
                 {selectedAccount ? (
-                    <div>
-                        <div className="add-info">
-                            <h2>{selectedAccount.name}: {selectedAccount.initialBalance} Рублей</h2>
-                            <p><strong>Описание:</strong> {selectedAccount.description}</p>
-                            <p><strong>Создан:</strong> {new Date(
-                                selectedAccount.createdAt).toLocaleDateString()}</p>
-                        </div>
-                    </div>
+                    <AccountDetails account={selectedAccount}/>
                 ) : (
                      <div>
                          <h2>Выберите счет</h2>
@@ -36,15 +28,5 @@ function App() {
         </div>
     );
 }
-
-App.propTypes = {
-    selectedAccount: PropTypes.shape({
-                                         id: PropTypes.number.isRequired,
-                                         name: PropTypes.string.isRequired,
-                                         description: PropTypes.string.isRequired,
-                                         initialBalance: PropTypes.number.isRequired,
-                                         createdAt: PropTypes.string.isRequired,
-                                     }),
-};
 
 export default App;
