@@ -1,23 +1,30 @@
 .container {
-    padding: 30px 150px;
+    padding: 30px;
     height: 100vh;
-    display: flex;
     gap: 30px;
+    display: flex; /* Изменено на flex для правильного выравнивания блоков */
+    flex-direction: row; /* Размещение блоков горизонтально */
+    box-sizing: border-box; /* Для учета padding в размерах */
+    overflow: hidden; /* Убирает лишнюю прокрутку */
 }
 
 .container .left-block {
     padding: 15px 30px;
-    max-height: 100vh;
+    max-height: calc(100vh - 60px); /* Высота с учетом отступов контейнера */
     background-color: white;
     border-radius: 10px;
-    width: 350px;
+    width: 350px; /* Фиксированная ширина */
+    overflow-y: auto; /* Добавляем прокрутку, если содержимое превышает высоту */
+    box-sizing: border-box;
 }
 
 .container .right-block {
     padding: 15px 30px;
     background-color: white;
     border-radius: 10px;
-    width: 100%;
+    flex: 1; /* Занимает оставшееся пространство */
+    overflow-y: auto; /* Прокрутка для большого содержимого */
+    box-sizing: border-box;
 }
 
 .container .right-block h2 {

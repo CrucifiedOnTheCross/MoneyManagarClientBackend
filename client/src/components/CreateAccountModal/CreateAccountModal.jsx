@@ -9,19 +9,11 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
     const [newAccount, setNewAccount] = useState({
                                                      name: "",
                                                      description: "",
-                                                     initialBalance: "0", // Будем работать с типом
-                                                                          // string, чтобы потом
-                                                                          // преобразовать в
-                                                                          // BigDecimal
-                                                     createdAt: new Date().toISOString(), // Используем
-                                                                                          // ISO
-                                                                                          // строку
-                                                                                          // для
-                                                                                          // Instant
+                                                     initialBalance: "0",
+                                                     createdAt: new Date().toISOString(),
                                                  });
     const [error, setError] = useState("");
 
-    // Обработчик изменения полей формы
     const handleChange = (e) => {
         const {name, value} = e.target;
         setNewAccount((prev) => ({
@@ -30,16 +22,14 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
         }));
     };
 
-    // Обработчик создания счета
     const handleCreateAccount = async () => {
-        // Проверка даты
         const today = new Date().toISOString(); // Получаем текущую дату в формате ISO
         if (newAccount.createdAt > today) {
             setError("Дата создания не может быть в будущем.");
             return;
         }
 
-        if (!newAccount.name || parseFloat(newAccount.initialBalance) <= 0) {
+        if (!newAccount.name || parseFloat(newAccount.initialBalance) < 0) {
             setError("Имя счета не может быть пустым и сумма должна быть больше 0.");
             return;
         }
@@ -48,9 +38,8 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
         const accountData = {
             name: newAccount.name,
             description: newAccount.description,
-            initialBalance: newAccount.initialBalance, // Отправляем как строку, сервер преобразует
-                                                       // в BigDecimal
-            createdAt: newAccount.createdAt, // Отправляем как ISO строку для Instant
+            initialBalance: newAccount.initialBalance,
+            createdAt: newAccount.createdAt,
         };
 
         // Отправляем запрос на сервер
@@ -68,9 +57,8 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
             }
 
             const result = await response.json();
-            onCreate(result); // Вызываем onCreate с полученными данными аккаунта
+            onCreate(result);
 
-            // Сброс формы после успешного создания
             setNewAccount({
                               name: "",
                               description: "",
@@ -78,7 +66,7 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
                               createdAt: new Date().toISOString(),
                           });
 
-            onClose(); // Закрытие модального окна
+            onClose();
         } catch (error) {
             setError("Произошла ошибка при создании аккаунта: " + error.message);
         }
@@ -88,8 +76,8 @@ function CreateAccountModal({isOpen, onClose, onCreate}) {
         <Modal
             isOpen={isOpen}
             onRequestClose={onClose}
-            className={styles.modal} // Применение CSS класса
-            overlayClassName={styles.overlay} // Применение CSS класса для overlay
+            className={styles.modal}
+            overlayClassName={styles.overlay}
         >
             <h2>Создать новый аккаунт</h2>
             <form>

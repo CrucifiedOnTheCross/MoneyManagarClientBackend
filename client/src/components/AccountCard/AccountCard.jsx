@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function AccountCard({account, onClick}) {
     return (
-        <div className={styles.card} onClick={() => onClick(account.id)}>
+        <div className={styles.card} onClick={() => onClick(account)}>
             <h3>{account.name}</h3>
             <p>{account.description}</p>
             <p>Initial Balance: {account.initialBalance}</p>

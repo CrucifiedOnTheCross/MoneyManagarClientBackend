@@ -8,8 +8,14 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex-grow: 1; /* Это заставит список занимать оставшееся пространство */
-    overflow-y: auto; /* Если счетов будет много, появится скролл */
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.container .accountList::-webkit-scrollbar {
+    display: none;
 }
 
 .container h2 {
@@ -35,5 +41,5 @@
 }
 
 .addAccountButton:hover {
-    background-color: #0056b3;
+    background-color: #5103b0;
 }

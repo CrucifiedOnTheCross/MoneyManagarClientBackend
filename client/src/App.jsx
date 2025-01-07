@@ -16,20 +16,21 @@ function App() {
                 <AccountList onAccountClick={handleAccountClick}/>
             </div>
             <div className="right-block">
-                <h2>Информация о счете</h2>
+
                 {selectedAccount ? (
                     <div>
                         <div className="add-info">
-                            <p><strong>Name:</strong> {selectedAccount.name}</p>
-                            <p><strong>Description:</strong> {selectedAccount.description}</p>
-                            <p><strong>Initial Balance:</strong> {selectedAccount.initialBalance}
-                            </p>
-                            <p><strong>Created At:</strong> {new Date(
+                            <h2>{selectedAccount.name}: {selectedAccount.initialBalance} Рублей</h2>
+                            <p><strong>Описание:</strong> {selectedAccount.description}</p>
+                            <p><strong>Создан:</strong> {new Date(
                                 selectedAccount.createdAt).toLocaleDateString()}</p>
                         </div>
                     </div>
                 ) : (
-                     <span>Счет не выбран, выберите пожалуйста(</span>
+                     <div>
+                         <h2>Выберите счет</h2>
+                         <span>Мы будем рады показать вам информацию о вашем счете :)</span>
+                     </div>
                  )}
             </div>
         </div>
