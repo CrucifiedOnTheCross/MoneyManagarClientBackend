@@ -20,7 +20,7 @@ function App() {
                     <AccountDetails account={selectedAccount}/>
                 ) : (
                      <div>
-                         <h2>Выберите счет</h2>
+                         <h2>Выберите счет в списке слева</h2>
                          <span>Мы будем рады показать вам информацию о вашем счете :)</span>
                      </div>
                  )}
