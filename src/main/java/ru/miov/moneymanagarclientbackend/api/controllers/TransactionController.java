@@ -15,9 +15,11 @@ import java.util.List;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import ru.miov.moneymanagarclientbackend.api.dto.TransactionDto;
 import ru.miov.moneymanagarclientbackend.api.service.TransactionService;
 
+@Slf4j
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor

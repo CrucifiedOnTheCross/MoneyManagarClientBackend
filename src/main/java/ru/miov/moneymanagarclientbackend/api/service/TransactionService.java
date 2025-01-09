@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import ru.miov.moneymanagarclientbackend.api.dto.TransactionDto;
 import ru.miov.moneymanagarclientbackend.api.exception.AccountNotFoundException;
 import ru.miov.moneymanagarclientbackend.api.exception.TransactionNotFoundException;
@@ -17,6 +18,7 @@ import ru.miov.moneymanagarclientbackend.store.entity.Transaction;
 import ru.miov.moneymanagarclientbackend.store.repository.AccountRepository;
 import ru.miov.moneymanagarclientbackend.store.repository.TransactionRepository;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -32,7 +34,7 @@ public class TransactionService {
                 () -> new AccountNotFoundException("Account not found with id: " + transactionDto.getAccountId())
         );
 
-        Transaction transaction = new Transaction();
+        Transaction transaction = transactionMapper.toEntity(transactionDto);
         Transaction savedTransaction = transactionRepository.save(transaction);
 
         return transactionMapper.toDto(savedTransaction);

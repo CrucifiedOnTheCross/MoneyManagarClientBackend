@@ -13,6 +13,7 @@ import lombok.Value;
 public class AccountDto implements Serializable {
 
     Long id;
+
     String name;
 
     String description;
