@@ -7,6 +7,7 @@ import CreateAccountModal from "../CreateAccountModal/CreateAccountModal.jsx";
 function AccountList({onAccountClick}) {
     const [accounts, setAccounts] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeContextMenu, setActiveContextMenu] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/accounts")
@@ -38,6 +39,23 @@ function AccountList({onAccountClick}) {
             .catch((error) => console.error("Error creating account:", error));
     };
 
+    const handleDeleteAccount = (id) => {
+        fetch(`http://localhost:8080/api/accounts/${id}`, {
+            method: "DELETE",
+        })
+            .then(() => {
+                setAccounts((prevAccounts) =>
+                                prevAccounts.filter((account) => account.id !== id)
+                );
+                setActiveContextMenu(null); // Закрыть контекстное меню
+            })
+            .catch((error) => console.error("Error deleting account:", error));
+    };
+
+    const handleContextMenuOpen = (id, x = null, y = null) => {
+        setActiveContextMenu(id ? {id, x, y} : null);
+    };
+
     return (
         <div className={styles.container}>
             <h2>Список Счетов</h2>
@@ -48,6 +66,13 @@ function AccountList({onAccountClick}) {
                         key={account.id}
                         account={account}
                         onClick={onAccountClick}
+                        onDelete={handleDeleteAccount}
+                        onContextMenuOpen={handleContextMenuOpen}
+                        contextMenuPosition={
+                            activeContextMenu && activeContextMenu.id === account.id
+                            ? {x: activeContextMenu.x, y: activeContextMenu.y}
+                            : null
+                        }
                     />
                 ))}
             </div>

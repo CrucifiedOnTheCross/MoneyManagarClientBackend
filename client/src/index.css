@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'SuisseIntl-Medium', sans-serif; /* Применяем шрифт ко всему телу */
-    background-color: #000000;
+    background-color: #eeeeee;
 }
 
 h1, h2, h3, h4, h5, h6, p {
