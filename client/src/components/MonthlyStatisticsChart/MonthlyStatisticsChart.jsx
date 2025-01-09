@@ -1,14 +1,12 @@
-// src/components/MonthlyStatisticsChart/MonthlyStatisticsChart.jsx
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2'; // Используем Bar для столбчатого графика
 import {
+    BarElement,
     CategoryScale,
     Chart as ChartJS,
     Legend,
     LinearScale,
-    LineElement,
-    PointElement,
     Title,
     Tooltip
 } from 'chart.js';
@@ -17,8 +15,7 @@ import {
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend
@@ -33,7 +30,8 @@ const MonthlyStatisticsChart = ({accountId}) => {
         const fetchStatistics = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:8080/api/statistics/${accountId}`);
+                    `http://localhost:8080/api/statistics/${accountId}`
+                );
                 setStatistics(response.data);
             } catch (error) {
                 console.error("Error fetching statistics", error);
@@ -52,7 +50,7 @@ const MonthlyStatisticsChart = ({accountId}) => {
     }
 
     // Подготавливаем данные для графика
-    const dates = Object.keys(statistics);
+    const dates = Object.keys(statistics).sort(); // Сортируем даты по возрастанию
     const income = dates.map(date => statistics[date].income);
     const expense = dates.map(date => statistics[date].expense);
 
@@ -60,26 +58,53 @@ const MonthlyStatisticsChart = ({accountId}) => {
         labels: dates,
         datasets: [
             {
-                label: 'Income',
+                label: 'Доход',
                 data: income,
+                backgroundColor: 'rgba(0, 128, 0, 0.7)', // Зеленый цвет для доходов
                 borderColor: 'green',
-                backgroundColor: 'rgba(0, 128, 0, 0.2)',
-                fill: true,
+                borderWidth: 1,
             },
             {
-                label: 'Expense',
+                label: 'Расход',
                 data: expense,
+                backgroundColor: 'rgba(255, 0, 0, 0.7)', // Красный цвет для расходов
                 borderColor: 'red',
-                backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                fill: true,
+                borderWidth: 1,
             },
         ],
     };
 
     return (
         <div>
-            <h3>Monthly Statistics</h3>
-            <Line data={data} options={{responsive: true, plugins: {legend: {position: 'top'}}}}/>
+            <h3>Статистика по месяцам</h3>
+            <Bar
+                data={data}
+                options={{
+                    responsive: true,
+                    plugins: {
+                        legend: {position: 'top'},
+                        title: {
+                            display: true,
+                            text: 'Доходы и расходы по месяцу',
+                        },
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Месяц',
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Сумма',
+                            },
+                            beginAtZero: true, // Оставляем начало оси Y с нуля
+                        },
+                    },
+                }}
+            />
         </div>
     );
 };
