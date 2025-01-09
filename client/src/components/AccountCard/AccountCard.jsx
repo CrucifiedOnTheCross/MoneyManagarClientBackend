@@ -22,8 +22,8 @@ function AccountCard({account, onClick, onContextMenuOpen, contextMenuPosition, 
         >
             <h3>{account.name}</h3>
             <p>{account.description}</p>
-            <p>Initial Balance: {account.initialBalance}</p>
-            <p>Created At: {new Date(account.createdAt).toLocaleDateString()}</p>
+            <p>Баланс: {account.initialBalance}</p>
+            <p>Создан: {new Date(account.createdAt).toLocaleDateString()}</p>
 
             {contextMenuPosition && (
                 <div

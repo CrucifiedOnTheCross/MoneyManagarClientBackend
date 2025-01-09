@@ -25,6 +25,9 @@
     flex: 1; /* Занимает оставшееся пространство */
     overflow-y: auto; /* Прокрутка для большого содержимого */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .container .right-block h2 {

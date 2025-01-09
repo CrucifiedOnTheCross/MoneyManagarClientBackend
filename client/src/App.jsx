@@ -1,7 +1,9 @@
 import './App.css';
 import AccountList from "./components/AccountList/AccountList.jsx";
-import AccountDetails from "./components/AccountDetails/AccountDetails.jsx";
+import TransactionList from "./components/TransactionList/TransactionList.jsx";
 import {useState} from "react";
+import AccountDetails from "./components/AccountDetails/AccountDetails.jsx";
+import MonthlyStatisticsChart from './components/MonthlyStatisticsChart/MonthlyStatisticsChart.jsx'; // Импортируем компонент
 
 function App() {
     const [selectedAccount, setSelectedAccount] = useState(null);
@@ -17,7 +19,12 @@ function App() {
             </div>
             <div className="right-block">
                 {selectedAccount ? (
-                    <AccountDetails account={selectedAccount}/>
+                    <>
+                        <AccountDetails account={selectedAccount}/>
+                        <MonthlyStatisticsChart
+                            accountId={selectedAccount.id}/> {/* Добавляем график */}
+                        <TransactionList accountId={selectedAccount.id}/>
+                    </>
                 ) : (
                      <div>
                          <h2>Выберите счет в списке слева</h2>

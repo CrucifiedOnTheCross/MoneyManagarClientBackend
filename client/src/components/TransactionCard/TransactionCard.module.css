@@ -1,17 +1,55 @@
 .transactionCard {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 12px 0;
+    transition: box-shadow 0.3s ease;
+    font-family: "Arial", sans-serif;
 }
 
-.title {
-    margin: 0;
+.transactionCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.income {
+    border-left: 4px solid #4caf50; /* Зелёная линия для доходов */
+}
+
+.expense {
+    border-left: 4px solid #f44336; /* Красная линия для расходов */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.type {
+    font-weight: bold;
     color: #333;
+    font-size: 1rem;
 }
 
-.text {
-    margin: 5px 0;
-    color: #555;
+.amount {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: inherit;
+}
+
+.body {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.description {
+    margin: 4px 0;
+}
+
+.date {
+    margin: 4px 0;
+    color: #888;
+    font-size: 0.85rem;
 }

@@ -19,6 +19,26 @@
 
 .card p {
     margin: 0;
+    white-space: nowrap; /* Текст в одну строку */
+    overflow: hidden; /* Скрыть текст, выходящий за пределы */
+    text-overflow: ellipsis; /* Для обрезания текста при отсутствии анимации */
+    position: relative;
+}
+
+.card p span {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollText 10s linear infinite; /* Настроить скорость анимации */
+}
+
+/* Анимация */
+@keyframes scrollText {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 .contextMenu {
